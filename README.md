@@ -13,5 +13,9 @@ npm i
 then 
 npm start 
 
+Change URI variable of MongoDB connection which
+contains MongoDB username & password
 
 Congratulations :3 Project is running on your local machine.
+
+<img src="https://github.com/AhnabShahin/XpeedStudio/blob/main/Documentation.jpg" >
