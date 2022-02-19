@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 import { useDropzone } from 'react-dropzone'
 
-function Chat({ socket, setProcess, process, result, room }) {
+function Chat({ socket, setProcess, total, process, result, room }) {
   const [writtenText, setWrittenText] = useState("");
 
   const [fileTarget, setFileTarget] = useState(null);
@@ -32,15 +32,12 @@ function Chat({ socket, setProcess, process, result, room }) {
   }, [])
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
 
-  useEffect(() => {
-
-  }, []);
 
   return (
     <div className="contain">
       <div className="chat-window">
         <div className="chat-header">
-          <p>Total Result</p>
+          <p>Total Result : {total}</p>
         </div>
         <div className="chat-body">
           <ScrollToBottom className="message-container">

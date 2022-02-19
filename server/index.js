@@ -65,16 +65,16 @@ async function run() {
                       item.result = null;
                       queue.push(item)
                       resolve(item);
-                    }
+                    }   
                   })
                 })
               }
-              return await saveFile(item);
-
+              return await saveFile(item); 
+ 
             })
             await Promise.all(promises)
             resolve(queue);
-          })
+          })  
         }
         procesFiles(data)
           .then(async (q) => {
@@ -99,9 +99,9 @@ async function run() {
               })
               await Promise.all(promises);
               queueRunning = false;
-
+ 
             }
-          })
+          }) 
       });
 
       socket.on("getAllResult", async function (data) { 

@@ -2,43 +2,17 @@ import React, { useCallback, useEffect, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 import { useDropzone } from 'react-dropzone'
 
-function ChatTwo({ socket,  result, room }) {
+function ChatTwo({ socket,  result,total, room }) {
     const [writtenText, setWrittenText] = useState("");
     const [fileTarget, setFileTarget] = useState(null);
 
     socket.emit("join_room", room);
 
-    const sendFile = () => {
-        if (fileTarget != null) {
-            let files = []
-            fileTarget.map((file) => {
-                let data = {}
-                data.name = file.name;
-                data.image = file;
-                data.writtenText = writtenText;
-                files.push(data)
-            })
-            socket.emit('send_file', files, function (e) { })
-            setWrittenText('');
-            setFileTarget(null);
-        }
-    }
-
-
-    const onDrop = useCallback(acceptedFiles => {
-        setFileTarget(acceptedFiles)
-    }, [])
-    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
-
-    useEffect(() => {
-
-    }, []);
-
     return (
         <div className="contain">
             <div className="chat-window">
                 <div className="chat-header">
-                    <p>Total Result</p>
+                    <p>Total Result : {total}</p>
                 </div>
                 <div className="chat-body">
                     <ScrollToBottom className="message-container">
